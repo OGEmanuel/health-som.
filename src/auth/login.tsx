@@ -13,7 +13,7 @@ import { useState, type Dispatch, type SetStateAction } from 'react';
 const Login = () => {
   const year = new Date().getFullYear();
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center pb-8 max-sm:px-5 sm:pb-10">
+    <section className="flex h-screen min-h-screen flex-col items-center justify-center pb-8 max-sm:px-5 sm:pb-10">
       <div className="flex h-full w-full flex-col items-center justify-end gap-12 sm:max-w-[25rem]">
         <Logo className="sm:hidden" />
         <div className="flex flex-col gap-6">
