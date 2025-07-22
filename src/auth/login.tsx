@@ -10,10 +10,12 @@ import XmarkCircle from '@/assets/jsx-icons/xmark-circle';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useHospitalStore } from '@/store/select-hospital-control';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
-  const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
+  const { selectedHospital, setSelectedHospital } = useHospitalStore();
   const year = new Date().getFullYear();
 
   return (
@@ -41,7 +43,7 @@ const Login = () => {
       </div>
       <div
         className={cn(
-          'flex h-full w-full flex-3/4 flex-col items-center justify-end gap-2 sm:max-w-[17.5rem] sm:flex-2/4 2xl:flex-3/4',
+          'flex h-full w-full flex-3/4 flex-col items-center justify-end gap-2 sm:max-w-[17.5rem] sm:flex-2/3 2xl:flex-3/4',
           selectedHospital && 'max-sm:flex-1/3',
         )}
       >
@@ -64,7 +66,7 @@ const Login = () => {
 
 export default Login;
 
-const HOSPITAL_LIST = [
+export const HOSPITAL_LIST = [
   {
     id: 1,
     name: 'St. Peter Micheal College Hosipital',
@@ -94,7 +96,7 @@ const HOSPITAL_LIST = [
 
 const InputDetails = (props: {
   selectedHospital: number | null;
-  setSelectedHospital: Dispatch<SetStateAction<number | null>>;
+  setSelectedHospital: (id: number | null) => void;
 }) => {
   const { selectedHospital, setSelectedHospital } = props;
 
@@ -117,7 +119,7 @@ const InputDetails = (props: {
 };
 
 const SearchBox = (props: {
-  setSelectedHospital: Dispatch<SetStateAction<number | null>>;
+  setSelectedHospital: (id: number | null) => void;
   selectedHospital: number | null;
 }) => {
   const { setSelectedHospital, selectedHospital } = props;
@@ -185,7 +187,7 @@ const SearchBox = (props: {
 };
 
 const SelectedHospital = (props: {
-  setSelectedHospital: Dispatch<SetStateAction<number | null>>;
+  setSelectedHospital: (id: number | null) => void;
   selectedHospital: number | null;
 }) => {
   const { setSelectedHospital, selectedHospital } = props;
@@ -222,6 +224,8 @@ const IdInput = () => {
   const [showPasswordInput, setShowPasswordInput] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-6">
@@ -292,6 +296,7 @@ const IdInput = () => {
       {passwordInput.length > 1 && (
         <Button
           // onClick={() => setShowPasswordInput(!showPasswordInput)}
+          onClick={() => navigate('/')}
           className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80"
         >
           Open profile

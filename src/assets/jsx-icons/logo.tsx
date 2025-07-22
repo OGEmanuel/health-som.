@@ -1,6 +1,8 @@
-const Logo = () => {
+const Logo = (props: { className?: string }) => {
+  const { className } = props;
   return (
     <svg
+      className={className}
       width="126"
       height="32"
       viewBox="0 0 126 32"

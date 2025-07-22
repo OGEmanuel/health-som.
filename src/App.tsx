@@ -1,11 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import QueryProvider from "./lib/query-provider";
-import Login from "./auth/login";
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import QueryProvider from './lib/query-provider';
+import Login from './auth/login';
+import Home from './home';
 
 const router = createBrowserRouter([
   {
-    path: "/auth/login",
+    path: '/auth/login',
     element: <Login />,
+  },
+  {
+    path: '/',
+    element: <Home />,
   },
 ]);
 
