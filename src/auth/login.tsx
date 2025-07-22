@@ -1,4 +1,6 @@
 import CheckCircle from '@/assets/jsx-icons/check-circle';
+import Eye from '@/assets/jsx-icons/eye';
+import EyeClosed from '@/assets/jsx-icons/eye-closed';
 import Hospital from '@/assets/jsx-icons/hospital';
 import Logo from '@/assets/jsx-icons/logo';
 import LongArrowRightDown from '@/assets/jsx-icons/long-arrow-right-down';
@@ -11,23 +13,38 @@ import { cn } from '@/lib/utils';
 import { useState, type Dispatch, type SetStateAction } from 'react';
 
 const Login = () => {
+  const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
   const year = new Date().getFullYear();
+
   return (
     <section className="flex h-screen min-h-screen flex-col items-center justify-center pb-8 max-sm:px-5 sm:pb-10">
-      <div className="flex h-full w-full flex-col items-center justify-end gap-12 sm:max-w-[25rem]">
-        <Logo className="sm:hidden" />
+      <div className="flex h-full w-full flex-col items-center justify-end gap-12 sm:max-w-[25rem] sm:gap-[4.5rem]">
+        <Logo />
         <div className="flex flex-col gap-6">
           <div className="flex w-full flex-col gap-3 text-center">
-            <h1 className="text-2xl leading-[100%] font-semibold -tracking-[0.03em]">{`Let’s find your hospital`}</h1>
+            <h1 className="text-2xl leading-[100%] font-semibold -tracking-[0.03em]">
+              {selectedHospital
+                ? `What’s your patient ID?`
+                : `Let’s find your hospital`}
+            </h1>
             <p className="text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
-              Please enter the name of the hospital where your medical records
-              are stored.
+              {selectedHospital
+                ? 'Please provide your unique patient ID to safely retrieve your medical records.'
+                : 'Please enter the name of the hospital where your medical records are stored.'}
             </p>
           </div>
-          <InputDetails />
+          <InputDetails
+            setSelectedHospital={setSelectedHospital}
+            selectedHospital={selectedHospital}
+          />
         </div>
       </div>
-      <div className="flex h-full w-full flex-3/4 flex-col items-center justify-end gap-2 sm:max-w-[17.5rem]">
+      <div
+        className={cn(
+          'flex h-full w-full flex-3/4 flex-col items-center justify-end gap-2 sm:max-w-[17.5rem] sm:flex-2/4 2xl:flex-3/4',
+          selectedHospital && 'max-sm:flex-1/3',
+        )}
+      >
         <p className="text-center text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
           <span className="text-[#1E1E1E]">Health something</span> do not retain
           or have access to your medical records.
@@ -75,8 +92,12 @@ const HOSPITAL_LIST = [
   },
 ];
 
-const InputDetails = () => {
-  const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
+const InputDetails = (props: {
+  selectedHospital: number | null;
+  setSelectedHospital: Dispatch<SetStateAction<number | null>>;
+}) => {
+  const { selectedHospital, setSelectedHospital } = props;
+
   return (
     <section className="flex flex-col gap-6">
       {selectedHospital ? (
@@ -198,6 +219,9 @@ const SelectedHospital = (props: {
 
 const IdInput = () => {
   const [idInput, setIdInput] = useState('');
+  const [showPasswordInput, setShowPasswordInput] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
@@ -226,16 +250,51 @@ const IdInput = () => {
             <CheckCircle className="absolute top-1/2 right-3 -translate-y-1/2" />
           )}
         </div>
-        {idInput === '20194040' && (
+        {idInput === '20194040' && !showPasswordInput && (
           <p className="text-center text-sm leading-[22px] font-medium tracking-tight text-[#1E1E1E]">
             A temporary password has been sent to the email address
             bo*****@*****.com for you to access your profile.
           </p>
         )}
+        {showPasswordInput && (
+          <div className="relative">
+            <Input
+              className={cn(
+                'focus-visible:border-ring h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-medium placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#5842B6]',
+                passwordInput.length >= 8 &&
+                  passwordInput !== 'abcdefgh' &&
+                  'focus-visible:ring-[#FE5D5D]',
+              )}
+              max={8}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Enter password"
+              value={passwordInput}
+              onChange={e => setPasswordInput(e.target.value)}
+            />
+            <button
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute top-1/2 left-3 -translate-y-1/2 cursor-pointer"
+            >
+              {showPassword ? <EyeClosed /> : <Eye />}
+            </button>
+          </div>
+        )}
       </div>
-      {idInput === '20194040' && (
-        <Button className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80">
+      {idInput === '20194040' && !showPasswordInput && (
+        <Button
+          onClick={() => setShowPasswordInput(!showPasswordInput)}
+          className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80"
+        >
           Enter password
+          <LongArrowRightDown />
+        </Button>
+      )}
+      {passwordInput.length > 1 && (
+        <Button
+          // onClick={() => setShowPasswordInput(!showPasswordInput)}
+          className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80"
+        >
+          Open profile
           <LongArrowRightDown />
         </Button>
       )}
