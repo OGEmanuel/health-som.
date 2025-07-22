@@ -22,18 +22,29 @@ const Home = () => {
               <div className="rounded-full border border-[#1488C71A] bg-[#A9E1FF] p-1.5">
                 <Hospital stroke="white" />
               </div>
-              <p className="text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D]">
+              <p className="text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] max-sm:hidden">
                 {/* St. Peter Micheal Co... */}
-                St. Peter Mich...
-                {/* {(() => {
-                const hospitalName = HOSPITAL_LIST.find(
-                  h => h.id === selectedHospital,
-                )?.name;
-                if (!hospitalName) return null;
-                return hospitalName.length > 23
-                  ? hospitalName.slice(0, 20) + '...'
-                  : hospitalName;
-              })()} */}
+                {/* St. Peter Mich... */}
+                {(() => {
+                  const hospitalName = HOSPITAL_LIST.find(
+                    h => h.id === selectedHospital,
+                  )?.name;
+                  if (!hospitalName) return null;
+                  return hospitalName.length > 23
+                    ? hospitalName.slice(0, 20) + '...'
+                    : hospitalName;
+                })()}
+              </p>
+              <p className="text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] sm:hidden">
+                {(() => {
+                  const hospitalName = HOSPITAL_LIST.find(
+                    h => h.id === selectedHospital,
+                  )?.name;
+                  if (!hospitalName) return null;
+                  return hospitalName.length > 17
+                    ? hospitalName.slice(0, 14) + '...'
+                    : hospitalName;
+                })()}
               </p>
             </div>
             <Separator orientation="vertical" className="!h-6 bg-[#1E1E1E0D]" />
