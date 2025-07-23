@@ -215,7 +215,7 @@ const SelectedHospital = (props: {
           }
         </p>
 
-        <p className="text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
+        <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
           {
             HOSPITAL_LIST.find(hospital => hospital.id === selectedHospital)
               ?.address
