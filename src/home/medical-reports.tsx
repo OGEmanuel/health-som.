@@ -7,7 +7,7 @@ const MedicalReports = () => {
         <h1 className="text-xl leading-[100%] font-semibold -tracking-[0.03em] sm:text-2xl">
           Welcome, Abolaji
         </h1>
-        <p className="text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
+        <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
           Stay in control of your health and get clear insights made just for
           you.
         </p>
