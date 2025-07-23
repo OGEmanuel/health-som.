@@ -22,7 +22,7 @@ const MedicalReports = () => {
           <p className="leading-[22px] font-semibold tracking-tight text-[#1D1D1D]">
             Waiting on your first report
           </p>
-          <p className="text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
+          <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
             Your medical reports will be available here once shared by your
             healthcare provider.
           </p>
