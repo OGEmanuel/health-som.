@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <section className="flex flex-col items-center">
-      <div className="w-full max-w-[1440px] px-5 pt-6 pb-3 sm:px-6 sm:pb-2">
+      <div className="w-full px-5 pt-6 pb-3 sm:px-6 sm:pb-2">
         <div className="flex items-center justify-between">
           <Logo className="max-sm:hidden" />
           <LogoSmall className="sm:hidden" />
@@ -68,7 +68,7 @@ const HomeTabs = () => {
   return (
     <Tabs defaultValue="medical-reports" className="w-full self-start">
       <div className="scrollbar flex w-full justify-center border-b border-[#1E1E1E0D] max-sm:overflow-auto">
-        <TabsList className="w-full max-w-[1440px] px-5 sm:px-6">
+        <TabsList className="w-full px-5 sm:px-6">
           <TabsTrigger value="medical-reports">Medical reports</TabsTrigger>
           <TabsTrigger value="profile-data">Profile data</TabsTrigger>
           <TabsTrigger value="more-features">
@@ -82,7 +82,7 @@ const HomeTabs = () => {
       <div className="flex justify-center">
         <TabsContent
           value="medical-reports"
-          className="flex w-full max-w-[1440px] gap-6 px-5 sm:px-20"
+          className="flex w-full gap-6 px-5 sm:px-20"
         >
           <MedicalReports />
         </TabsContent>

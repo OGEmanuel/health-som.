@@ -2,7 +2,7 @@ import Sheet from '@/assets/images/sheet';
 
 const MedicalReports = () => {
   return (
-    <section className="flex w-full flex-col gap-8 self-start">
+    <section className="flex w-full max-w-[1032px] flex-col gap-8 self-start">
       <div className="flex flex-col gap-2 sm:gap-3">
         <h1 className="text-xl leading-[100%] font-semibold -tracking-[0.03em] sm:text-2xl">
           Welcome, Abolaji
@@ -12,9 +12,12 @@ const MedicalReports = () => {
           you.
         </p>
       </div>
-      <div className="border-b border-dashed border-[#7C7C7C]"></div>
-      <div className="flex justify-center gap-4 max-sm:flex-col sm:items-center sm:pt-[6.25rem]">
-        <Sheet />
+      <div className="custom-dashed-border"></div>
+      <div className="flex justify-center max-sm:flex-col sm:items-center sm:gap-4 sm:pt-[6.25rem]">
+        <div className="h-[7.375rem] w-24 sm:h-[164px] sm:w-[140px]">
+          <Sheet className="max-sm:hidden" />
+          <Sheet width="96" height="118" className="sm:hidden" />
+        </div>
         <div className="flex w-full max-w-[324px] flex-col gap-2">
           <p className="leading-[22px] font-semibold tracking-tight text-[#1D1D1D]">
             Waiting on your first report

@@ -29,7 +29,7 @@ const Login = () => {
                 ? `What’s your patient ID?`
                 : `Let’s find your hospital`}
             </h1>
-            <p className="text-sm leading-[22px] font-medium tracking-tight text-[#7C7C7C]">
+            <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
               {selectedHospital
                 ? 'Please provide your unique patient ID to safely retrieve your medical records.'
                 : 'Please enter the name of the hospital where your medical records are stored.'}
@@ -136,11 +136,18 @@ const SearchBox = (props: {
     <div className="relative w-full">
       <Input
         type="search"
-        className="focus-visible:border-ring peer h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-medium placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#25AFF9]"
+        className="focus-visible:border-ring peer h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-normal placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#25AFF9]"
         placeholder="Search hospital.."
         value={searchInput}
         onChange={e => setSearchInput(e.target.value)}
       />
+      <button
+        aria-label="clear"
+        onClick={() => setSearchInput('')}
+        className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer peer-placeholder-shown:hidden"
+      >
+        <XmarkCircle fill="#D9D9D9" />
+      </button>
       <div
         className={cn(
           'absolute mt-2 flex h-max max-h-[17.5rem] w-full flex-col gap-0.5 overflow-auto rounded-xl border border-[#1D1D1D0D] bg-white p-1 opacity-0 shadow-[0px_16px_16px_0px_#00000008] transition-opacity peer-focus-visible:pointer-events-auto peer-focus-visible:z-auto peer-focus-visible:opacity-100',

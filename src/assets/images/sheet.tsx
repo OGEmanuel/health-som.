@@ -1,9 +1,15 @@
-const Sheet = () => {
+const Sheet = (props: {
+  className?: string;
+  width?: string;
+  height?: string;
+}) => {
+  const { className, width = '169', height = '198' } = props;
   return (
     <svg
-      width="169"
-      height="198"
-      viewBox="0 0 169 198"
+      className={className}
+      width={width}
+      height={height}
+      viewBox={'0 0 169 198'}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

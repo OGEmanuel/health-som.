@@ -134,3 +134,26 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefoxx */
 }
+
+/* For Chrome, Safari, Edge, Opera */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* For Firefox */
+input[type='search'] {
+  -moz-appearance: textfield;
+}
+
+.custom-dashed-border {
+  border: 1px solid transparent; /* Required for border-image to work */
+  border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="1" viewBox="0 0 10 1"><rect x="0" y="0" width="2" height="1" fill="black"/><rect x="3" y="0" width="1" height="1" fill="transparent"/></svg>')
+    1 repeat; /* '1' slices the image, 'repeat' repeats it */
+  /* border-image-slice: 1; Essential for border-image-repeat to work */
+  border-image-slice: 0 0 1 0;
+  border-image-repeat: repeat;
+  padding: 10px; /* To see the border clearly */
+}
