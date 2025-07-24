@@ -25,6 +25,55 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Check from '@/assets/jsx-icons/check';
+import firstReport from '@/assets/images/report-a1.png';
+import secondReport from '@/assets/images/report-b2.png';
+import thirdReport from '@/assets/images/report-b3.png';
+
+type Report = {
+  id: number;
+  title: string;
+  image: string;
+  status: 'ready' | 'pending' | 'unavailable';
+  date: string;
+};
+
+const REPORTS: Report[] = [
+  {
+    id: 1,
+    title: 'Thorough Examination of Dengue Fever Outcomes',
+    image: firstReport,
+    status: 'ready',
+    date: 'January 15, 2025',
+  },
+  {
+    id: 2,
+    title: 'Extensive Summary of Cholera Test Results',
+    image: secondReport,
+    status: 'pending',
+    date: 'December 25, 2024',
+  },
+  {
+    id: 3,
+    title: 'Insights into Tuberculosis Diagnostic Findings',
+    image: thirdReport,
+    date: 'November 10, 2024',
+    status: 'unavailable',
+  },
+  {
+    id: 4,
+    title: 'Comprehensive Analysis of Hepatitis Test Outcomes',
+    image: firstReport,
+    date: 'October 11, 2024',
+    status: 'pending',
+  },
+  {
+    id: 5,
+    title: 'Overview of COVID-19 Evaluation Results',
+    image: firstReport,
+    date: 'January 15, 2025',
+    status: 'pending',
+  },
+];
 
 const MedicalReports = () => {
   return (
@@ -40,26 +89,78 @@ const MedicalReports = () => {
         </p>
       </div>
       <div className="custom-dashed-border"></div>
-      <div className="flex justify-center max-sm:flex-col sm:items-center sm:gap-4 sm:pt-[6.25rem]">
-        <div className="h-[7.375rem] w-24 sm:h-[164px] sm:w-[140px]">
-          <Sheet className="max-sm:hidden" />
-          <Sheet width="96" height="118" className="sm:hidden" />
+      {REPORTS.length > 0 ? (
+        <div className="grid grid-cols-2 gap-x-5 gap-y-[26px] pb-[4.3125rem] sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+          {REPORTS.map(report => (
+            <ReportList key={report.id} report={report} />
+          ))}
         </div>
-        <div className="flex w-full max-w-[324px] flex-col gap-2">
-          <p className="leading-[22px] font-semibold tracking-tight text-[#1D1D1D]">
-            Waiting on your first report
-          </p>
-          <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
-            Your medical reports will be available here once shared by your
-            healthcare provider.
-          </p>
-        </div>
-      </div>
+      ) : (
+        <EmptyReport />
+      )}
     </section>
   );
 };
 
 export default MedicalReports;
+
+const ReportList = (props: { report: Report }) => {
+  const { report } = props;
+
+  const statusColor = {
+    ready: 'bg-[#41D741]',
+    pending: 'bg-[#F1943A]',
+    unavailable: 'bg-[#FE5D5D]',
+  };
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="relative h-[9.25rem] overflow-hidden rounded-xl bg-[#F9F9F9F9]">
+        <div className="custom-gradient absolute bottom-0 z-10 h-16 w-full"></div>
+        <div className="absolute top-9 left-1/2 w-[127.9px] -translate-x-1/2 shadow-[0px_8px_24px_0px_#0000000D]">
+          <img
+            src={report.image}
+            alt={report.id.toString()}
+            className="w-full"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-1">
+        <p className="line-clamp-2 text-sm leading-[22px] font-semibold -tracking-[0.04em] text-ellipsis text-[#1D1D1D] sm:line-clamp-1">
+          {report.title}
+        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
+            {report.date}
+          </p>
+          <span
+            className={cn('h-1 w-4 rounded', statusColor[report.status])}
+          ></span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const EmptyReport = () => {
+  return (
+    <div className="flex justify-center max-sm:flex-col sm:items-center sm:gap-4 sm:pt-[6.25rem]">
+      <div className="h-[7.375rem] w-24 sm:h-[164px] sm:w-[140px]">
+        <Sheet className="max-sm:hidden" />
+        <Sheet width="96" height="118" className="sm:hidden" />
+      </div>
+      <div className="flex w-full max-w-[324px] flex-col gap-2">
+        <p className="leading-[22px] font-semibold tracking-tight text-[#1D1D1D]">
+          Waiting on your first report
+        </p>
+        <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
+          Your medical reports will be available here once shared by your
+          healthcare provider.
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const FormSchema = z.object({
   password: z.string().min(8, {

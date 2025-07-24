@@ -152,8 +152,15 @@ input[type='search'] {
   border: 1px solid transparent; /* Required for border-image to work */
   border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="1" viewBox="0 0 10 1"><rect x="0" y="0" width="2" height="1" fill="black"/><rect x="3" y="0" width="1" height="1" fill="transparent"/></svg>')
     1 repeat; /* '1' slices the image, 'repeat' repeats it */
-  /* border-image-slice: 1; Essential for border-image-repeat to work */
   border-image-slice: 0 0 1 0;
   border-image-repeat: repeat;
   padding: 0px; /* To see the border clearly */
+}
+
+.custom-gradient {
+  background-image: linear-gradient(
+    180deg,
+    rgba(249, 249, 249, 0) 0%,
+    #f9f9f9 100%
+  );
 }
