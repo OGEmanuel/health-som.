@@ -155,5 +155,5 @@ input[type='search'] {
   /* border-image-slice: 1; Essential for border-image-repeat to work */
   border-image-slice: 0 0 1 0;
   border-image-repeat: repeat;
-  padding: 10px; /* To see the border clearly */
+  padding: 0px; /* To see the border clearly */
 }

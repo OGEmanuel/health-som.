@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useHospitalStore } from '@/store/select-hospital-control';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 const Login = () => {
@@ -124,6 +124,13 @@ const SearchBox = (props: {
 }) => {
   const { setSelectedHospital, selectedHospital } = props;
   const [searchInput, setSearchInput] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const filteredHospitalList =
     searchInput === ''
@@ -135,6 +142,7 @@ const SearchBox = (props: {
   return (
     <div className="relative w-full">
       <Input
+        ref={inputRef}
         type="search"
         className="focus-visible:border-ring peer h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-normal placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#25AFF9]"
         placeholder="Search hospital.."
@@ -240,7 +248,7 @@ const IdInput = () => {
         <div className="relative">
           <Input
             className={cn(
-              'focus-visible:border-ring h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-medium placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#5842B6]',
+              'focus-visible:border-ring h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-normal placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#5842B6]',
               idInput.length === 8 &&
                 idInput !== '20194040' &&
                 'focus-visible:ring-[#FE5D5D]',
@@ -271,7 +279,7 @@ const IdInput = () => {
           <div className="relative">
             <Input
               className={cn(
-                'focus-visible:border-ring h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-medium placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#5842B6]',
+                'focus-visible:border-ring h-12 rounded-xl border-none bg-[#F9F9F9] pl-[2.625rem] text-sm leading-[22px] font-semibold tracking-tight text-[#1D1D1D] shadow-none placeholder:font-normal placeholder:text-[#ACACAC] focus-visible:ring-[2px] focus-visible:ring-[#5842B6]',
                 passwordInput.length >= 8 &&
                   passwordInput !== 'abcdefgh' &&
                   'focus-visible:ring-[#FE5D5D]',
