@@ -78,7 +78,7 @@ const REPORTS: Report[] = [
 const MedicalReports = () => {
   return (
     <section className="flex w-full max-w-[1032px] flex-col gap-8 self-start">
-      <ChangePassword />
+      {/* <ChangePassword /> */}
       <div className="flex flex-col gap-2 sm:gap-3">
         <h1 className="text-xl leading-[100%] font-semibold -tracking-[0.03em] sm:text-2xl">
           Welcome, Abolaji
@@ -90,7 +90,7 @@ const MedicalReports = () => {
       </div>
       <div className="custom-dashed-border"></div>
       {REPORTS.length > 0 ? (
-        <div className="grid grid-cols-2 gap-x-5 gap-y-[26px] pb-[4.3125rem] sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-[26px] max-sm:pb-[4.3125rem] sm:gap-x-6 sm:gap-y-8 md:grid-cols-3 lg:grid-cols-4">
           {REPORTS.map(report => (
             <ReportList key={report.id} report={report} />
           ))}
