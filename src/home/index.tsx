@@ -7,17 +7,7 @@ import { useHospitalStore } from '@/store/select-hospital-control';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import MedicalReports from './medical-reports';
 import LogoSmall from '@/assets/jsx-icons/logo-small';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { ReactNode } from 'react';
-import Lock from '@/assets/jsx-icons/lock';
-import ChatBubbleQuestion from '@/assets/jsx-icons/chat-bubble-question';
-import LogOut from '@/assets/jsx-icons/log-out';
+import Menu from './components/menu-dropdown';
 
 const Home = () => {
   const { selectedHospital } = useHospitalStore();
@@ -107,54 +97,5 @@ const HomeTabs = () => {
         </TabsContent>
       </div>
     </Tabs>
-  );
-};
-
-const Menu = (props: { children: ReactNode }) => {
-  const { children } = props;
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="flex w-60 flex-col gap-2 rounded-xl border border-[#1D1D1D0D] p-1 shadow-[0px_16px_16px_0px_#00000008]"
-      >
-        <div className="rounded-none rounded-t-lg border-b-[3px] border-[#F9F9F9] bg-[#F9F9F9] p-2">
-          <p className="text-sm leading-[22px] font-medium -tracking-[0.03em] text-[#1D1D1D]">
-            Abolaji Olunuga Oladipo
-          </p>
-          <p className="text-xs leading-5 -tracking-[0.03em] text-[#7C7C7C]">
-            Patient ID: 102917
-          </p>
-        </div>
-        <div className="flex flex-col gap-1">
-          <DropdownMenuItem className="group rounded-lg p-2 leading-[22px] -tracking-[0.03em] text-[#636363] focus:bg-[#FAFAFA] focus:text-[#1D1D1D]">
-            <Lock className="group-focus:hidden" />
-            <Lock className="hidden group-focus:block" stroke="#636363" />
-            Change password
-          </DropdownMenuItem>
-          <DropdownMenuItem className="group rounded-lg p-2 leading-[22px] -tracking-[0.03em] text-[#636363] focus:bg-[#FAFAFA] focus:text-[#1D1D1D]">
-            <ChatBubbleQuestion className="group-focus:hidden" />
-            <ChatBubbleQuestion
-              className="hidden group-focus:block"
-              fill="#636363"
-            />
-            Feedback and support
-          </DropdownMenuItem>
-          <DropdownMenuSeparator className="mx-1 bg-[#1D1D1D0D]" />
-          <DropdownMenuItem
-            variant="destructive"
-            className="group rounded-lg px-2 pt-2 pb-2.5 data-[variant=destructive]:text-[#636363] data-[variant=destructive]:focus:bg-[#FE5D5D0D] data-[variant=destructive]:focus:text-[#FE5D5D]"
-          >
-            <LogOut className="group-focus:hidden" />
-            <LogOut className="hidden group-focus:block" fill="#FE5D5D" />
-            Log out
-          </DropdownMenuItem>
-          <span className="px-2 py-1 text-xs leading-5 -tracking-[0.03em] text-[#7C7C7C]">
-            Version V1.0
-          </span>
-        </div>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 };

@@ -300,20 +300,13 @@ const IdInput = () => {
         )}
       </div>
       {idInput === '20194040' && !showPasswordInput && (
-        <Button
-          onClick={() => setShowPasswordInput(!showPasswordInput)}
-          className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80"
-        >
+        <Button onClick={() => setShowPasswordInput(!showPasswordInput)}>
           Enter password
           <LongArrowRightDown />
         </Button>
       )}
       {passwordInput.length > 1 && (
-        <Button
-          // onClick={() => setShowPasswordInput(!showPasswordInput)}
-          onClick={() => navigate('/')}
-          className="h-[42px] cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80"
-        >
+        <Button onClick={() => navigate('/')}>
           Open profile
           <LongArrowRightDown />
         </Button>

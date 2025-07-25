@@ -78,7 +78,7 @@ const REPORTS: Report[] = [
 const MedicalReports = () => {
   return (
     <section className="flex w-full max-w-[1032px] flex-col gap-8 self-start">
-      {/* <ChangePassword /> */}
+      <ChangePassword />
       <div className="flex flex-col gap-2 sm:gap-3">
         <h1 className="text-xl leading-[100%] font-semibold -tracking-[0.03em] sm:text-2xl">
           Welcome, Abolaji
@@ -115,7 +115,7 @@ const ReportList = (props: { report: Report }) => {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative h-[9.25rem] overflow-hidden rounded-xl bg-[#F9F9F9F9]">
+      <div className="relative h-[9.25rem] overflow-hidden rounded-xl border border-transparent bg-[#F9F9F9F9] hover:border-[#5842B6] hover:shadow-[0px_0px_0px_2px_#FFFFFF_inset]">
         <div className="custom-gradient absolute bottom-0 z-10 h-16 w-full"></div>
         <div className="absolute top-9 left-1/2 w-[127.9px] -translate-x-1/2 shadow-[0px_8px_24px_0px_#0000000D]">
           <img
@@ -212,7 +212,7 @@ const ChangePassword = () => {
   };
   return (
     <Dialog open={open}>
-      <DialogContent className="gap-6 rounded-3xl border-none p-5 shadow-[0px_40px_40px_0px_#00000008,_0px_16px_24px_0px_#00000008] max-sm:text-start sm:max-w-[30rem] sm:p-8 [&>button]:hidden">
+      <DialogContent className="gap-6" showCloseButton={false}>
         <DialogHeader className="max-sm:text-start">
           <DialogTitle className="text-base leading-[22px] tracking-tight">
             Change your password
@@ -361,9 +361,7 @@ const ChangePassword = () => {
                 </FormItem>
               )}
             />
-            <Button className="h-[42px] w-full cursor-pointer rounded-xl bg-[#5842B6] hover:bg-[#5842B6]/80">
-              Change password
-            </Button>
+            <Button>Change password</Button>
           </form>
         </Form>
       </DialogContent>
