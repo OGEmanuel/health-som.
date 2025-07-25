@@ -28,6 +28,7 @@ import Check from '@/assets/jsx-icons/check';
 import firstReport from '@/assets/images/report-a1.png';
 import secondReport from '@/assets/images/report-b2.png';
 import thirdReport from '@/assets/images/report-b3.png';
+import ButtonParams from '../components/add-params';
 
 type Report = {
   id: number;
@@ -114,31 +115,33 @@ const ReportList = (props: { report: Report }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="relative h-[9.25rem] overflow-hidden rounded-xl border border-transparent bg-[#F9F9F9F9] hover:border-[#5842B6] hover:shadow-[0px_0px_0px_2px_#FFFFFF_inset]">
-        <div className="custom-gradient absolute bottom-0 z-10 h-16 w-full"></div>
-        <div className="absolute top-9 left-1/2 w-[127.9px] -translate-x-1/2 shadow-[0px_8px_24px_0px_#0000000D]">
-          <img
-            src={report.image}
-            alt={report.id.toString()}
-            className="w-full"
-          />
+    <ButtonParams name="report" value={report.id.toString()}>
+      <div className="flex flex-col gap-3">
+        <div className="relative h-[9.25rem] overflow-hidden rounded-xl border border-transparent bg-[#F9F9F9F9] hover:border-[#5842B6] hover:shadow-[0px_0px_0px_2px_#FFFFFF_inset]">
+          <div className="custom-gradient absolute bottom-0 z-10 h-16 w-full"></div>
+          <div className="absolute top-9 left-1/2 w-[127.9px] -translate-x-1/2 shadow-[0px_8px_24px_0px_#0000000D]">
+            <img
+              src={report.image}
+              alt={report.id.toString()}
+              className="w-full"
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col gap-1">
-        <p className="line-clamp-2 text-sm leading-[22px] font-semibold -tracking-[0.04em] text-ellipsis text-[#1D1D1D] sm:line-clamp-1">
-          {report.title}
-        </p>
-        <div className="flex items-center justify-between">
-          <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
-            {report.date}
+        <div className="flex flex-col gap-1 text-start">
+          <p className="line-clamp-2 text-sm leading-[22px] font-semibold -tracking-[0.04em] text-ellipsis text-[#1D1D1D] sm:line-clamp-1">
+            {report.title}
           </p>
-          <span
-            className={cn('h-1 w-4 rounded', statusColor[report.status])}
-          ></span>
+          <div className="flex items-center justify-between">
+            <p className="text-sm leading-[22px] tracking-tight text-[#7C7C7C]">
+              {report.date}
+            </p>
+            <span
+              className={cn('h-1 w-4 rounded', statusColor[report.status])}
+            ></span>
+          </div>
         </div>
       </div>
-    </div>
+    </ButtonParams>
   );
 };
 
