@@ -150,7 +150,7 @@ const Details = () => {
             </p>
           </div>
         </div>
-        <div className="relative flex flex-col gap-4 px-5 text-sm text-[#636363] md:before:absolute md:before:top-0 md:before:left-0 md:before:z-20 md:before:h-full md:before:w-0.5 md:before:rounded-lg md:before:bg-[#E5E5E5] md:after:absolute md:after:top-0 md:after:left-0 md:after:z-10 md:after:h-full md:after:w-2 md:after:bg-[#F9F9F9] lg:px-10 [&>*]:leading-6 [&>*]:tracking-tight">
+        <div className="relative flex flex-col gap-4 text-sm text-[#636363] md:px-5 md:before:absolute md:before:top-0 md:before:left-0 md:before:z-20 md:before:h-full md:before:w-0.5 md:before:rounded-lg md:before:bg-[#E5E5E5] md:after:absolute md:after:top-0 md:after:left-0 md:after:z-10 md:after:h-full md:after:w-2 md:after:bg-[#F9F9F9] lg:px-10 [&>*]:leading-6 [&>*]:tracking-tight">
           <p>
             What This Means Your result indicates a current or recent typhoid
             infection, which usually happens through contaminated water or food.
