@@ -117,7 +117,7 @@ const HomeTabs = () => {
       <div className="flex justify-center">
         <TabsContent
           value="medical-reports"
-          className={cn('w-full px-5 sm:px-20')}
+          className={cn('w-full px-5 sm:px-20 md:px-10 lg:px-20')}
         >
           {paramValue ? <MedicalReportDetails /> : <MedicalReports />}
         </TabsContent>
