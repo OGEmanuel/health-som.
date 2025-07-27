@@ -115,10 +115,10 @@ const Details = () => {
         </p>
         <div className="flex flex-col gap-4 lg:px-10">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between text-xs text-[#ACACAC] [&>p]:leading-5 [&>p]:tracking-tight">
+            <div className="_justify-between flex items-center text-xs text-[#ACACAC] [&>p]:basis-full [&>p]:leading-5 [&>p]:tracking-tight">
               <p>Healthy</p>
-              <p>Monitor</p>
-              <p>Seek Medical Care</p>
+              <p className="text-center">Monitor</p>
+              <p className="text-end">Seek Medical Care</p>
             </div>
             <div className="relative">
               <img src={range} alt="range-bar" />
