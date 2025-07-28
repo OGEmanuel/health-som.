@@ -364,7 +364,7 @@ const ChangePassword = () => {
                 </FormItem>
               )}
             />
-            <Button>Change password</Button>
+            <Button className="w-full">Change password</Button>
           </form>
         </Form>
       </DialogContent>

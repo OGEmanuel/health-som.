@@ -11,6 +11,7 @@ import Menu from './components/menu-dropdown';
 import { cn, removeParameter } from '@/lib/utils';
 import { useNavigate, useSearchParams } from 'react-router';
 import MedicalReportDetails from './medical-reports/details';
+import ProfileData from './profile-data';
 
 const Home = () => {
   const { selectedHospital } = useHospitalStore();
@@ -122,7 +123,7 @@ const HomeTabs = () => {
           {paramValue ? <MedicalReportDetails /> : <MedicalReports />}
         </TabsContent>
         <TabsContent value="profile-data">
-          Change your password here.
+          <ProfileData />
         </TabsContent>
         <TabsContent value="more-features">
           Change your password here.

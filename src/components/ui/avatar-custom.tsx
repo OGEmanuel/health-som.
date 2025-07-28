@@ -6,7 +6,7 @@ const AvatarCustom = (props: {
   alt: string;
   fallback: string;
   className?: string;
-  unreadCount?: number;
+  fallbackClassName?: string;
 }) => {
   return (
     <div className="relative inline-block">
@@ -16,7 +16,12 @@ const AvatarCustom = (props: {
           alt={props.alt}
           className="object-cover object-top"
         />
-        <AvatarFallback className="leading-[100px] font-semibold tracking-[-0.03em] text-white">
+        <AvatarFallback
+          className={cn(
+            'leading-[100px] font-semibold tracking-[-0.03em] text-white',
+            props.fallbackClassName,
+          )}
+        >
           {props.fallback}
         </AvatarFallback>
       </Avatar>

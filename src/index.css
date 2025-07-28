@@ -165,6 +165,33 @@ input[type='search'] {
   );
 }
 
+.dotted-spaced {
+  background-image:
+    linear-gradient(to right, #1d1d1d 10%, transparent 0%),
+    /* top */ linear-gradient(to right, #1d1d1d 10%, transparent 0%),
+    /* bottom */ linear-gradient(to bottom, #1d1d1d 10%, transparent 0%),
+    /* left */ linear-gradient(to bottom, #1d1d1d 10%, transparent 0%); /* right */
+  background-size:
+    8px 1px,
+    /* top */ 8px 1px,
+    /* bottom */ 1px 8px,
+    /* left */ 1px 8px; /* right */
+  background-position:
+    top left,
+    bottom left,
+    top left,
+    top right;
+  border-radius: 12px;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+}
+
+.dotted-spaced-bottom {
+  background-image: linear-gradient(to right, #1d1d1d80 10%, transparent 0%);
+  background-size: 8px 1px;
+  background-position: bottom left;
+  background-repeat: repeat-x;
+}
+
 .custom-gradient {
   background-image: linear-gradient(
     180deg,
