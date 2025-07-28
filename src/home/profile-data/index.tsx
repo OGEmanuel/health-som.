@@ -25,7 +25,7 @@ export const ProfileItem = (props: { title: string; children: ReactNode }) => {
   return (
     <div className="dotted-spaced-bottom flex items-center justify-between py-4 text-sm [&>p]:basis-full [&>p]:leading-[22px] [&>p]:tracking-tight">
       <p className="text-[#7C7C7C]">{title}</p>
-      <p className="flex items-center gap-2 font-medium text-[#1D1D1D] [&>span]:text-xs [&>span]:leading-5 [&>span]:font-normal [&>span]:tracking-tight [&>span]:text-[#8474CC]">
+      <p className="flex flex-wrap items-center gap-2 font-medium text-[#1D1D1D] [&>span]:text-xs [&>span]:leading-5 [&>span]:font-normal [&>span]:tracking-tight [&>span]:text-[#8474CC]">
         {children}
       </p>
     </div>
