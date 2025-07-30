@@ -79,7 +79,7 @@ const REPORTS: Report[] = [
 const MedicalReports = () => {
   return (
     <section className="flex w-full max-w-[1032px] flex-col gap-8 self-start">
-      <ChangePassword />
+      {/* <ChangePassword /> */}
       <div className="flex flex-col gap-2 sm:gap-3">
         <h1 className="text-xl leading-[100%] font-semibold -tracking-[0.03em] sm:text-2xl">
           Welcome, Abolaji
